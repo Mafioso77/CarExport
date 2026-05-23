@@ -1,0 +1,1614 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>BMW X7 xDrive40i — 2023 · SUV de Lujo 7 Pasajeros | AP Motors</title>
+<link rel="stylesheet" href="assets/styles.css" />
+<style>
+/* ============ PAGE-SPECIFIC ============ */
+
+/* CRUMBS */
+.crumbs {
+  font-size: 13px;
+  color: var(--ink-muted);
+  padding: 20px 0 8px;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+}
+.crumbs a { color: var(--ink-soft); }
+.crumbs a:hover { color: var(--ink); }
+.crumbs .sep { margin: 0 8px; color: var(--ink-faint); }
+
+/* HERO */
+.hero {
+  display: grid;
+  gap: 36px;
+  margin: 28px 0 48px;
+}
+@media (min-width: 900px) {
+  .hero {
+    grid-template-columns: 1.4fr 1fr;
+    align-items: start;
+    gap: 56px;
+  }
+}
+
+/* ============ CAROUSEL ============ */
+.carousel {
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--bg-soft);
+  aspect-ratio: 4 / 3;
+  cursor: zoom-in;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.carousel-track {
+  display: flex;
+  height: 100%;
+  transition: transform 450ms cubic-bezier(0.22, 0.61, 0.36, 1);
+  will-change: transform;
+}
+.carousel-track.no-anim { transition: none; }
+.carousel-slide {
+  flex: 0 0 100%;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.carousel-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  z-index: 3;
+  color: var(--ink);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  transition: all 0.2s ease;
+  opacity: 0;
+}
+.carousel:hover .carousel-arrow { opacity: 1; }
+.carousel-arrow:hover {
+  background: #fff;
+  transform: translateY(-50%) scale(1.08);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.18);
+}
+.carousel-arrow:active { transform: translateY(-50%) scale(0.95); }
+.carousel-arrow.prev { left: 14px; }
+.carousel-arrow.next { right: 14px; }
+.carousel-arrow svg { width: 20px; height: 20px; }
+.carousel-arrow:disabled { opacity: 0.3 !important; cursor: not-allowed; pointer-events: none; }
+
+/* Always visible on touch */
+@media (hover: none) {
+  .carousel-arrow { opacity: 1; }
+}
+
+.carousel-counter {
+  position: absolute;
+  bottom: 14px;
+  right: 14px;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(10px);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 999px;
+  z-index: 2;
+  letter-spacing: 0.02em;
+  font-variant-numeric: tabular-nums;
+}
+
+.carousel-dots {
+  position: absolute;
+  bottom: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 6px;
+  z-index: 2;
+  background: rgba(0,0,0,0.35);
+  backdrop-filter: blur(10px);
+  padding: 8px 12px;
+  border-radius: 999px;
+}
+.carousel-dots button {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.5);
+  transition: all 0.25s ease;
+  padding: 0;
+  cursor: pointer;
+}
+.carousel-dots button:hover { background: rgba(255,255,255,0.8); }
+.carousel-dots button.active {
+  background: #fff;
+  width: 22px;
+  border-radius: 999px;
+}
+@media (max-width: 600px) {
+  .carousel-dots { display: none; }
+}
+
+/* THUMBS */
+.thumb-strip {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 6px;
+  margin-top: 10px;
+  max-width: 480px;
+}
+@media (max-width: 600px) {
+  .thumb-strip { grid-template-columns: repeat(6, 1fr); max-width: none; }
+  .thumb-strip button:nth-child(n+7) { display: none; }
+}
+.thumb-strip button {
+  border-radius: 6px;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  border: 2px solid transparent;
+  background: var(--bg-soft);
+  transition: all 0.2s;
+  padding: 0;
+  position: relative;
+}
+.thumb-strip button.active { border-color: var(--accent); }
+.thumb-strip button:hover:not(.active) { border-color: var(--line-strong); }
+.thumb-strip img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.thumb-strip .more-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.65);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  pointer-events: none;
+}
+
+/* ============ LIGHTBOX ============ */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgb(8, 8, 10);
+  z-index: 100;
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  overflow: hidden;
+}
+.lightbox.open {
+  display: flex;
+  opacity: 1;
+}
+.lightbox-stage {
+  position: absolute;
+  inset: 0;
+  cursor: zoom-out;
+  overflow: hidden;
+}
+.lightbox-track {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  transition: transform 450ms cubic-bezier(0.22, 0.61, 0.36, 1);
+  will-change: transform;
+}
+.lightbox-track.no-anim { transition: none; }
+.lightbox-slide {
+  flex: 0 0 100%;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px;
+  box-sizing: border-box;
+}
+.lightbox-slide img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  box-shadow: 0 20px 80px rgba(0,0,0,0.7);
+  border-radius: 4px;
+  cursor: default;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 44px;
+  height: 44px;
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 50%;
+  color: #fff;
+  display: grid;
+  place-items: center;
+  z-index: 102;
+  transition: background 0.2s;
+  cursor: pointer;
+}
+.lightbox-close:hover { background: rgba(255,255,255,0.2); }
+.lightbox-close svg { width: 22px; height: 22px; }
+
+.lightbox-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 52px;
+  height: 52px;
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 50%;
+  color: #fff;
+  display: grid;
+  place-items: center;
+  z-index: 102;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+.lightbox-arrow:hover {
+  background: rgba(255,255,255,0.2);
+  transform: translateY(-50%) scale(1.06);
+}
+.lightbox-arrow:active { transform: translateY(-50%) scale(0.95); }
+.lightbox-arrow.prev { left: 20px; }
+.lightbox-arrow.next { right: 20px; }
+.lightbox-arrow svg { width: 26px; height: 26px; }
+.lightbox-arrow:disabled { opacity: 0.3; cursor: not-allowed; pointer-events: none; }
+
+.lightbox-counter {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(255,255,255,0.85);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  z-index: 102;
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
+  padding: 8px 18px;
+  border-radius: 999px;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 700px) {
+  .lightbox-slide { padding: 50px 14px; }
+  .lightbox-arrow { width: 44px; height: 44px; }
+  .lightbox-arrow.prev { left: 8px; }
+  .lightbox-arrow.next { right: 8px; }
+  .lightbox-arrow svg { width: 22px; height: 22px; }
+}
+
+body.lb-open { overflow: hidden; }
+
+.hero-badges {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  display: flex;
+  gap: 8px;
+  z-index: 2;
+}
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.95);
+  color: var(--ink);
+  backdrop-filter: blur(8px);
+}
+.badge.electric { background: var(--accent); color: #fff; }
+.badge.verified { background: var(--success); color: #fff; }
+.badge svg { width: 12px; height: 12px; }
+
+.hero-info .eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+.hero-title {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(34px, 5.5vw, 52px);
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+  margin-bottom: 6px;
+}
+.hero-subtitle {
+  font-size: 17px;
+  color: var(--ink-muted);
+  font-weight: 400;
+  margin-bottom: 32px;
+}
+.price-block {
+  padding: 24px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 28px;
+}
+.price-label {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+.price-now {
+  font-size: 40px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+.price-currency {
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--ink-muted);
+  margin-right: 4px;
+  letter-spacing: -0.02em;
+}
+.price-note {
+  margin-top: 8px;
+  color: var(--ink-muted);
+  font-size: 13px;
+}
+.cta-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.cta-row .btn { flex: 1 1 auto; min-width: 0; }
+
+/* QUICK SPECS STRIP */
+.quick-specs {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin: 0 0 56px;
+}
+@media (min-width: 640px) { .quick-specs { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 900px) { .quick-specs { grid-template-columns: repeat(6, 1fr); } }
+.quick-spec {
+  padding: 22px 16px;
+  background: var(--bg-card);
+  text-align: center;
+}
+.quick-spec-icon {
+  width: 28px;
+  height: 28px;
+  margin: 0 auto 10px;
+  color: var(--accent);
+}
+.quick-spec-label {
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  margin-bottom: 4px;
+  font-weight: 600;
+}
+.quick-spec-value {
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+/* SECTION HEADERS */
+.section { margin: 56px 0; }
+.section-head {
+  margin-bottom: 24px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.section-eyebrow {
+  font-size: 10px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.section-title {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(28px, 4vw, 38px);
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+}
+.section-sub {
+  color: var(--ink-muted);
+  font-size: 15px;
+  max-width: 480px;
+}
+
+/* GALLERY GRIDS */
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+@media (min-width: 768px) { .photo-grid { grid-template-columns: repeat(3, 1fr); } }
+.photo-grid img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radius);
+  background: var(--bg-soft);
+  transition: transform 0.3s;
+}
+.photo-grid img:hover { transform: scale(1.01); }
+.photo-grid .wide { grid-column: span 2; aspect-ratio: 16 / 9; }
+
+/* SPEC TABLE */
+.spec-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+@media (min-width: 768px) { .spec-grid { grid-template-columns: 1fr 1fr; } }
+.spec-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 22px;
+  border-bottom: 1px solid var(--line);
+  font-size: 14px;
+}
+.spec-row:last-child { border-bottom: none; }
+@media (min-width: 768px) {
+  .spec-row:nth-last-child(2):nth-child(odd) { border-bottom: none; }
+}
+.spec-key {
+  color: var(--ink-muted);
+  font-weight: 500;
+}
+.spec-val {
+  text-align: right;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+/* FEATURE BLOCKS */
+.feature-blocks {
+  display: grid;
+  gap: 16px;
+}
+@media (min-width: 768px) { .feature-blocks { grid-template-columns: repeat(2, 1fr); } }
+.feature-block {
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 28px;
+}
+.feature-block-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: var(--bg-soft);
+  display: grid;
+  place-items: center;
+  margin-bottom: 16px;
+  color: var(--accent);
+}
+.feature-block-icon svg { width: 22px; height: 22px; }
+.feature-block h3 {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 14px;
+}
+.feature-block ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.feature-block li {
+  font-size: 14px;
+  color: var(--ink-soft);
+  padding-left: 22px;
+  position: relative;
+  line-height: 1.5;
+}
+.feature-block li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 7px;
+  width: 14px;
+  height: 8px;
+  border-left: 2px solid var(--accent);
+  border-bottom: 2px solid var(--accent);
+  transform: rotate(-45deg);
+}
+
+/* CARFAX CALLOUT */
+.carfax-block {
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 768px) {
+  .carfax-block { grid-template-columns: 1.2fr 1fr; }
+}
+.carfax-image {
+  background: #f4f4f4;
+  padding: 16px;
+}
+.carfax-image img {
+  width: 100%;
+  border-radius: var(--radius-sm);
+}
+.carfax-text {
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.carfax-text .check {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--success);
+  color: #fff;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  width: fit-content;
+  margin-bottom: 16px;
+}
+.carfax-text h3 {
+  font-family: var(--display);
+  font-size: 28px;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin-bottom: 12px;
+}
+.carfax-text p {
+  color: var(--ink-muted);
+  font-size: 14px;
+  margin-bottom: 18px;
+}
+.carfax-bullets {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 500;
+}
+.carfax-bullets li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.carfax-bullets svg { width: 16px; height: 16px; color: var(--success); flex-shrink: 0; }
+
+/* VIDEO GRID */
+.video-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+@media (min-width: 700px) {
+  .video-grid { grid-template-columns: repeat(3, 1fr); }
+  /* Landscape video spans full width on its own row */
+  .video-card.landscape { grid-column: 1 / -1; }
+}
+@media (min-width: 1000px) {
+  .video-grid { grid-template-columns: repeat(3, 1fr); }
+  .video-card.landscape { grid-column: 1 / -1; aspect-ratio: 21 / 9; }
+}
+
+.video-card {
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: #0a0a0c;
+  cursor: pointer;
+  aspect-ratio: 9 / 16;
+  transition: transform 0.25s ease;
+}
+.video-card.landscape {
+  aspect-ratio: 16 / 9;
+}
+.video-card:hover {
+  transform: translateY(-2px);
+}
+.video-card video,
+.video-card img.poster {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.video-card img.poster {
+  z-index: 1;
+  transition: opacity 0.3s ease;
+}
+.video-card video {
+  z-index: 0;
+  pointer-events: none;
+}
+.video-card.playing img.poster,
+.video-card.playing .play-overlay {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.play-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(0,0,0,0.4) 100%);
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+.play-overlay .play-btn {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.95);
+  display: grid;
+  place-items: center;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+.video-card:hover .play-overlay .play-btn {
+  transform: scale(1.08);
+  background: #fff;
+}
+.play-overlay .play-btn svg {
+  width: 22px;
+  height: 22px;
+  color: var(--ink);
+  margin-left: 3px;
+}
+.video-card .duration-tag {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(8px);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+}
+
+/* CONTACT CTA */
+.contact-cta {
+  background: var(--bg-dark);
+  color: #fff;
+  border-radius: var(--radius);
+  padding: 48px 32px;
+  text-align: center;
+}
+.contact-cta .eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+.contact-cta h2 {
+  font-family: var(--display);
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  margin-bottom: 10px;
+  line-height: 1.1;
+}
+.contact-cta p {
+  color: #b0b0b2;
+  font-size: 16px;
+  margin-bottom: 28px;
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.contact-cta .cta-row {
+  justify-content: center;
+}
+.contact-cta .btn-outline {
+  border-color: rgba(255,255,255,0.3);
+  color: #fff;
+}
+.contact-cta .btn-outline:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(255,255,255,0.6);
+}
+
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="container row">
+    <a href="index.html" class="brand">
+      <div class="brand-mark">AP</div>
+      <div>
+        <div class="brand-name">AP Motors</div>
+        <span class="brand-sub">Costa Rica</span>
+      </div>
+    </a>
+    <nav class="header-nav">
+      <a href="index.html">Inventario</a>
+      <a href="index.html#proceso">Cómo Funciona</a>
+      <a href="index.html#contacto">Contacto</a>
+    </nav>
+    <a class="header-cta" href="https://wa.me/50687949894">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+      WhatsApp
+    </a>
+  </div>
+</header>
+
+<main class="container">
+
+  <!-- CRUMBS -->
+  <nav class="crumbs">
+    <a href="index.html">Inicio</a><span class="sep">/</span>
+    <a href="index.html">BMW</a><span class="sep">/</span>
+    <a href="index.html">X7</a><span class="sep">/</span>
+    <span>xDrive40i 2023</span>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <!-- Carousel -->
+    <div>
+      <div class="carousel" id="carousel" aria-roledescription="carrusel" tabindex="0">
+        <div class="hero-badges">
+          <span class="badge electric" style="background: #6b3410; color: #fff;">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 12c0-1.7.7-3.2 1.8-4.2L3 6h6l-.4 4-2-2c-.4.6-.6 1.3-.6 2 0 1.7 1.3 3 3 3v2c-2.8 0-5-2.2-5-5zm15.2 4.2c1.1-1 1.8-2.5 1.8-4.2 0-2.8-2.2-5-5-5V5c2.8 0 5 2.2 5 5 0 .7-.2 1.4-.6 2l-2-2L17 14h6l-1.8-2.2z"/></svg>
+            Mild Hybrid 48V
+          </span>
+          <span class="badge verified">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            Verificado
+          </span>
+        </div>
+
+        <div class="carousel-track" id="carousel-track">
+          <div class="carousel-slide"><img src="assets/cars/x7-xdrive40i/exterior/01-front-left-outdoor.png" alt="BMW X7 frente izquierdo" /></div>
+          <div class="carousel-slide"><img src="assets/cars/x7-xdrive40i/exterior/02-front-street.png" alt="BMW X7 frente en calle" /></div>
+          <div class="carousel-slide"><img src="assets/cars/x7-xdrive40i/exterior/03-rear-outdoor.png" alt="BMW X7 vista trasera" /></div>
+          <div class="carousel-slide"><img src="assets/cars/x7-xdrive40i/exterior/04-front-garage.png" alt="BMW X7 vista frontal" /></div>
+          <div class="carousel-slide"><img src="assets/cars/x7-xdrive40i/exterior/05-front-night.png" alt="BMW X7 luces LED" /></div>
+          <div class="carousel-slide"><img src="assets/cars/x7-xdrive40i/exterior/06-rear-garage.jpeg" alt="BMW X7 trasera" /></div>
+          <div class="carousel-slide"><img src="assets/cars/x7-xdrive40i/exterior/07-wheel.jpeg" alt="BMW X7 rines 21 pulgadas" /></div>
+          <div class="carousel-slide"><img src="assets/cars/x7-xdrive40i/interior/01-front-cabin.jpeg" alt="Cabina delantera" /></div>
+          <div class="carousel-slide"><img src="assets/cars/x7-xdrive40i/interior/02-passenger-view.jpeg" alt="Vista del pasajero" /></div>
+          <div class="carousel-slide"><img src="assets/cars/x7-xdrive40i/tech/01-gear-console.jpeg" alt="Consola con iluminación ambiental" /></div>
+          <div class="carousel-slide"><img src="assets/cars/x7-xdrive40i/tech/02-dashboard.jpeg" alt="Pantalla curva BMW" /></div>
+          <div class="carousel-slide"><img src="assets/cars/x7-xdrive40i/engine/01-engine-bay.jpeg" alt="Motor 3.0L Twin Turbo Inline-6" /></div>
+          <div class="carousel-slide"><img src="assets/cars/x7-xdrive40i/engine/02-engine-side.jpeg" alt="Motor BMW B58" /></div>
+          <div class="carousel-slide"><img src="assets/cars/x7-xdrive40i/engine/03-engine-detail.jpeg" alt="Detalle del motor" /></div>
+        </div>
+
+        <button class="carousel-arrow prev" id="carousel-prev" aria-label="Imagen anterior">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <button class="carousel-arrow next" id="carousel-next" aria-label="Imagen siguiente">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+
+        <div class="carousel-dots" id="carousel-dots" role="tablist" aria-label="Indicadores"></div>
+        <div class="carousel-counter" id="carousel-counter">1 / 14</div>
+      </div>
+
+      <!-- Thumbnail strip — first 6 images, last shows "+N" if more -->
+      <div class="thumb-strip" id="thumb-strip"></div>
+    </div>
+
+    <!-- Info -->
+    <div class="hero-info">
+      <div class="eyebrow">BMW · 2023 · 7.280 km</div>
+      <h1 class="hero-title">X7 xDrive40i</h1>
+      <p class="hero-subtitle">SUV de Lujo de 3 Filas · 7 Pasajeros · Tracción Integral xDrive</p>
+
+      <div class="price-block">
+        <div class="price-label">Precio</div>
+        <div>
+          <span class="price-currency">₡</span><span class="price-now">53.000.000</span>
+        </div>
+        <p class="price-note">Más gastos legales · Financiamiento disponible</p>
+      </div>
+
+      <div class="cta-row">
+        <a class="btn btn-wa" href="https://wa.me/50687949894?text=Hola%20Adri%C3%A1n%2C%20me%20interesa%20el%20BMW%20X7%20xDrive40i.%20%C2%BFSigue%20disponible%3F">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          Hablar por WhatsApp
+        </a>
+        <a class="btn btn-outline" href="tel:+50687949894">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Llamar
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUICK SPECS -->
+  <div class="quick-specs">
+    <div class="quick-spec">
+      <svg class="quick-spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      <div class="quick-spec-label">Año</div>
+      <div class="quick-spec-value">2023</div>
+    </div>
+    <div class="quick-spec">
+      <svg class="quick-spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      <div class="quick-spec-label">Kilometraje</div>
+      <div class="quick-spec-value">7.280 km</div>
+    </div>
+    <div class="quick-spec">
+      <svg class="quick-spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17h2l1-4h12l1 4h2M5 13v-3a2 2 0 012-2h10a2 2 0 012 2v3M7 17v2M17 17v2"/></svg>
+      <div class="quick-spec-label">Motor</div>
+      <div class="quick-spec-value">3.0L I6</div>
+    </div>
+    <div class="quick-spec">
+      <svg class="quick-spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+      <div class="quick-spec-label">Potencia</div>
+      <div class="quick-spec-value">375 HP</div>
+    </div>
+    <div class="quick-spec">
+      <svg class="quick-spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+      <div class="quick-spec-label">Pasajeros</div>
+      <div class="quick-spec-value">7</div>
+    </div>
+    <div class="quick-spec">
+      <svg class="quick-spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+      <div class="quick-spec-label">Tracción</div>
+      <div class="quick-spec-value">xDrive AWD</div>
+    </div>
+  </div>
+
+  <!-- VIDEO SECTION -->
+  <section class="section">
+    <div class="section-head">
+      <div>
+        <div class="section-eyebrow">Galería en movimiento</div>
+        <h2 class="section-title">Videos</h2>
+      </div>
+      <p class="section-sub">Mirá los detalles que las fotos no capturan. Tocá cualquier video para reproducir.</p>
+    </div>
+    <div class="video-grid">
+
+      <div class="video-card landscape" data-video>
+        <img class="poster" src="assets/cars/x7-xdrive40i/videos/03-bmw-logo-poster.jpg" alt="Logo BMW en cofre" loading="lazy" />
+        <video preload="none" playsinline loop muted
+          poster="assets/cars/x7-xdrive40i/videos/03-bmw-logo-poster.jpg">
+          <source src="assets/cars/x7-xdrive40i/videos/03-bmw-logo.mp4" type="video/mp4" />
+        </video>
+        <div class="play-overlay">
+          <div class="play-btn">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="video-card" data-video>
+        <img class="poster" src="assets/cars/x7-xdrive40i/videos/02-interior-poster.jpg" alt="Cabina e iluminación interior" loading="lazy" />
+        <video preload="none" playsinline loop muted
+          poster="assets/cars/x7-xdrive40i/videos/02-interior-poster.jpg">
+          <source src="assets/cars/x7-xdrive40i/videos/02-interior.mp4" type="video/mp4" />
+        </video>
+        <div class="play-overlay">
+          <div class="play-btn">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="video-card" data-video>
+        <img class="poster" src="assets/cars/x7-xdrive40i/videos/04-grille-poster.jpg" alt="Parrilla BMW iluminada" loading="lazy" />
+        <video preload="none" playsinline loop muted
+          poster="assets/cars/x7-xdrive40i/videos/04-grille-poster.jpg">
+          <source src="assets/cars/x7-xdrive40i/videos/04-grille.mp4" type="video/mp4" />
+        </video>
+        <div class="play-overlay">
+          <div class="play-btn">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="video-card" data-video>
+        <img class="poster" src="assets/cars/x7-xdrive40i/videos/01-hood-detail-poster.jpg" alt="Detalle del capó" loading="lazy" />
+        <video preload="none" playsinline loop muted
+          poster="assets/cars/x7-xdrive40i/videos/01-hood-detail-poster.jpg">
+          <source src="assets/cars/x7-xdrive40i/videos/01-hood-detail.mp4" type="video/mp4" />
+        </video>
+        <div class="play-overlay">
+          <div class="play-btn">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- HIGHLIGHTS -->
+  <section class="section">
+    <div class="carfax-block">
+      <div class="carfax-image" style="background: #1a1a1c; display: grid; place-items: center; padding: 40px;">
+        <img src="assets/cars/x7-xdrive40i/engine/01-engine-bay.jpeg" alt="Motor BMW TwinPower Turbo" style="border-radius: 8px;" />
+      </div>
+      <div class="carfax-text">
+        <span class="check">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+          Estado Excepcional
+        </span>
+        <h3>El BMW más grande jamás construido.</h3>
+        <p>Apenas 7.280 km recorridos. SUV insignia de BMW con motor 3.0L Twin-Turbo Inline-6 y tecnología mild hybrid 48V. Tres filas de asientos, capacidad para 7 pasajeros y nivel de equipamiento de lujo completo.</p>
+        <ul class="carfax-bullets">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> 375 HP · 398 lb-ft de torque</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> 0-100 km/h en 5.6 segundos</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Capacidad de remolque 3.400 kg</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Hasta 2.560 L de carga</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- FULL SPEC TABLE -->
+  <section class="section">
+    <div class="section-head">
+      <div>
+        <div class="section-eyebrow">Detalles técnicos</div>
+        <h2 class="section-title">Especificaciones</h2>
+      </div>
+    </div>
+    <div class="spec-grid">
+      <div class="spec-row"><span class="spec-key">Marca</span><span class="spec-val">BMW</span></div>
+      <div class="spec-row"><span class="spec-key">Modelo</span><span class="spec-val">X7 xDrive40i</span></div>
+      <div class="spec-row"><span class="spec-key">Año</span><span class="spec-val">2023</span></div>
+      <div class="spec-row"><span class="spec-key">Carrocería</span><span class="spec-val">SUV de 3 filas</span></div>
+      <div class="spec-row"><span class="spec-key">Kilometraje</span><span class="spec-val">7.280 km</span></div>
+      <div class="spec-row"><span class="spec-key">Color exterior</span><span class="spec-val">Gris Brooklyn</span></div>
+      <div class="spec-row"><span class="spec-key">Color interior</span><span class="spec-val">Negro</span></div>
+      <div class="spec-row"><span class="spec-key">Tapicería</span><span class="spec-val">Sensafin</span></div>
+      <div class="spec-row"><span class="spec-key">Motor</span><span class="spec-val">3.0L TwinPower Turbo Inline-6</span></div>
+      <div class="spec-row"><span class="spec-key">Tecnología híbrida</span><span class="spec-val">Mild Hybrid 48V</span></div>
+      <div class="spec-row"><span class="spec-key">Potencia</span><span class="spec-val">375 HP @ 5.200 rpm</span></div>
+      <div class="spec-row"><span class="spec-key">Torque</span><span class="spec-val">398 lb-ft (540 Nm)</span></div>
+      <div class="spec-row"><span class="spec-key">Transmisión</span><span class="spec-val">Automática deportiva 8 vel.</span></div>
+      <div class="spec-row"><span class="spec-key">Tracción</span><span class="spec-val">Integral xDrive (AWD)</span></div>
+      <div class="spec-row"><span class="spec-key">Suspensión</span><span class="spec-val">Neumática adaptativa</span></div>
+      <div class="spec-row"><span class="spec-key">0 a 100 km/h</span><span class="spec-val">5.6 s</span></div>
+      <div class="spec-row"><span class="spec-key">Velocidad máxima</span><span class="spec-val">210 km/h (limitada)</span></div>
+      <div class="spec-row"><span class="spec-key">Consumo combinado</span><span class="spec-val">10.7 L/100km</span></div>
+      <div class="spec-row"><span class="spec-key">Capacidad combustible</span><span class="spec-val">83 L</span></div>
+      <div class="spec-row"><span class="spec-key">Capacidad remolque</span><span class="spec-val">3.400 kg</span></div>
+      <div class="spec-row"><span class="spec-key">Capacidad de carga</span><span class="spec-val">hasta 2.560 L</span></div>
+      <div class="spec-row"><span class="spec-key">Peso</span><span class="spec-val">2.495 kg</span></div>
+      <div class="spec-row"><span class="spec-key">Largo</span><span class="spec-val">5.170 mm</span></div>
+      <div class="spec-row"><span class="spec-key">Ancho</span><span class="spec-val">2.000 mm</span></div>
+      <div class="spec-row"><span class="spec-key">Alto</span><span class="spec-val">1.835 mm</span></div>
+      <div class="spec-row"><span class="spec-key">Distancia entre ejes</span><span class="spec-val">3.105 mm</span></div>
+      <div class="spec-row"><span class="spec-key">Pasajeros</span><span class="spec-val">7 (3 filas)</span></div>
+      <div class="spec-row"><span class="spec-key">Estado</span><span class="spec-val">Seminuevo · Importado de Estados Unidos</span></div>
+    </div>
+  </section>
+
+  <!-- FEATURE BLOCKS -->
+  <section class="section">
+    <div class="section-head">
+      <div>
+        <div class="section-eyebrow">Equipamiento</div>
+        <h2 class="section-title">Paquetes incluidos</h2>
+      </div>
+      <p class="section-sub">Configuración premium completa, sin opciones omitidas.</p>
+    </div>
+
+    <div class="feature-blocks">
+
+      <!-- TECNOLOGÍA -->
+      <div class="feature-block">
+        <div class="feature-block-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <h3>Tecnología</h3>
+        <ul>
+          <li>Pantalla curva BMW con Head-Up Display</li>
+          <li>iDrive 8.5 con BMW Intelligent Personal Assistant</li>
+          <li>Sistema de sonido Harman Kardon Surround</li>
+          <li>Apple CarPlay y Android Auto inalámbrico</li>
+          <li>Carga inalámbrica para dispositivos</li>
+          <li>Navegación BMW Maps</li>
+          <li>Comfort Access (entrada y encendido sin llave)</li>
+          <li>BMW Digital Key</li>
+          <li>My BMW App</li>
+        </ul>
+      </div>
+
+      <!-- SEGURIDAD -->
+      <div class="feature-block">
+        <div class="feature-block-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Seguridad y Asistencia</h3>
+        <ul>
+          <li>Active Driving Assistant</li>
+          <li>Alerta de colisión frontal con frenado automático de emergencia</li>
+          <li>Detección activa de punto ciego</li>
+          <li>Alerta de salida de carril</li>
+          <li>Cámara de reversa</li>
+          <li>Sensores de estacionamiento</li>
+        </ul>
+      </div>
+
+      <!-- INTERIOR -->
+      <div class="feature-block">
+        <div class="feature-block-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4v16M6 8h12a2 2 0 012 2v10M6 12h12"/></svg>
+        </div>
+        <h3>Interior</h3>
+        <ul>
+          <li>3 filas de asientos para hasta 7 pasajeros</li>
+          <li>Asientos delanteros calefactados</li>
+          <li>Tapicería en cuero Sensafin</li>
+          <li>Climatización automática de 4 zonas</li>
+          <li>Volante calefactado</li>
+          <li>Iluminación ambiental multicolor</li>
+          <li>Acabados premium en aluminio</li>
+        </ul>
+      </div>
+
+      <!-- EXTERIOR + MECÁNICA -->
+      <div class="feature-block">
+        <div class="feature-block-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17h2l1-4h12l1 4h2M5 13v-3a2 2 0 012-2h10a2 2 0 012 2v3"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg>
+        </div>
+        <h3>Exterior y Mecánica</h3>
+        <ul>
+          <li>Faros LED adaptativos</li>
+          <li>Parrilla doble riñón BMW iluminada</li>
+          <li>Molduras en Satin Aluminum</li>
+          <li>Techo panorámico (Moonroof)</li>
+          <li>Compuerta trasera eléctrica</li>
+          <li>Suspensión neumática adaptativa</li>
+          <li>Transmisión deportiva 8 vel. con levas al volante</li>
+          <li>Barras de techo de fábrica</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTACT CTA -->
+  <section class="section">
+    <div class="contact-cta">
+      <div class="eyebrow">Contacto directo</div>
+      <h2>Hablá con Adrián.</h2>
+      <p>Coordiná una prueba de manejo o resolvé tus dudas. Respuesta rápida por WhatsApp. También recibimos vehículos en consignación.</p>
+      <div class="cta-row">
+        <a class="btn btn-wa" href="https://wa.me/50687949894?text=Hola%20Adri%C3%A1n%2C%20me%20interesa%20el%20BMW%20X7%20xDrive40i.%20%C2%BFSigue%20disponible%3F">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          +506 8794 9894
+        </a>
+        <a class="btn btn-outline" href="tel:+50687949894">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Llamar ahora
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Galería ampliada">
+  <button class="lightbox-close" id="lb-close" aria-label="Cerrar">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+  <button class="lightbox-arrow prev" id="lb-prev" aria-label="Imagen anterior">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+  </button>
+  <button class="lightbox-arrow next" id="lb-next" aria-label="Imagen siguiente">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+  </button>
+  <div class="lightbox-stage" id="lb-stage">
+    <div class="lightbox-track" id="lb-track"></div>
+  </div>
+  <div class="lightbox-counter" id="lb-counter">1 / 14</div>
+</div>
+
+<!-- WhatsApp Floating Button -->
+<a class="wa-float" href="https://wa.me/50687949894" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+</a>
+
+<!-- FOOTER -->
+<footer class="site-footer" id="contacto">
+  <div class="container">
+    <a href="index.html" class="brand">
+      <div class="brand-mark">AP</div>
+      <div>
+        <div class="brand-name">AP Motors</div>
+        <span class="brand-sub">Costa Rica</span>
+      </div>
+    </a>
+    <div class="footer-content">
+      <div class="footer-contact">
+        <h4>Contacto</h4>
+        <a href="https://wa.me/50687949894">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          +506 8794 9894
+        </a>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2026 AP Motors. Todos los derechos reservados.</div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+
+  // ============================================================
+  // CAROUSEL — main hero gallery
+  // Handles: arrow buttons, swipe (touch + mouse drag), dots,
+  // counter, keyboard, thumbnail strip, click-to-open lightbox.
+  // ============================================================
+
+  const carousel = document.getElementById('carousel');
+  const track = document.getElementById('carousel-track');
+  const slides = Array.from(track.querySelectorAll('.carousel-slide'));
+  const prevBtn = document.getElementById('carousel-prev');
+  const nextBtn = document.getElementById('carousel-next');
+  const dotsContainer = document.getElementById('carousel-dots');
+  const counter = document.getElementById('carousel-counter');
+  const thumbStrip = document.getElementById('thumb-strip');
+
+  const total = slides.length;
+  let index = 0;                  // logical index, 0..total-1
+  let trackIndex = 1;              // physical track position (offset by 1 because of front clone)
+  let dragging = false;
+  let startX = 0;
+  let currentX = 0;
+  let trackWidth = 0;
+
+  // ---- Clone edge slides for seamless infinite loop ----
+  // Layout becomes: [cloneOfLast, slide0, slide1, ..., slideN-1, cloneOfFirst]
+  const firstClone = slides[0].cloneNode(true);
+  firstClone.setAttribute('aria-hidden', 'true');
+  firstClone.classList.add('is-clone');
+  const lastClone = slides[total - 1].cloneNode(true);
+  lastClone.setAttribute('aria-hidden', 'true');
+  lastClone.classList.add('is-clone');
+  track.insertBefore(lastClone, slides[0]);
+  track.appendChild(firstClone);
+
+  // Build dots (one per real slide)
+  for (let i = 0; i < total; i++) {
+    const d = document.createElement('button');
+    d.setAttribute('role', 'tab');
+    d.setAttribute('aria-label', `Ir a la imagen ${i + 1}`);
+    d.addEventListener('click', (e) => {
+      e.stopPropagation();
+      goTo(i);
+    });
+    dotsContainer.appendChild(d);
+  }
+  const dots = Array.from(dotsContainer.children);
+
+  // Build thumbs (up to 8 visible; last shows "+N" overlay if there are more)
+  const THUMB_VISIBLE = 8;
+  const thumbCount = Math.min(THUMB_VISIBLE, total);
+  for (let i = 0; i < thumbCount; i++) {
+    const btn = document.createElement('button');
+    btn.setAttribute('aria-label', `Vista previa ${i + 1}`);
+    const img = document.createElement('img');
+    img.src = slides[i].querySelector('img').src;
+    img.alt = '';
+    btn.appendChild(img);
+    if (i === THUMB_VISIBLE - 1 && total > THUMB_VISIBLE) {
+      const more = document.createElement('div');
+      more.className = 'more-overlay';
+      more.textContent = `+${total - THUMB_VISIBLE}`;
+      btn.appendChild(more);
+    }
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      goTo(i);
+    });
+    thumbStrip.appendChild(btn);
+  }
+  const thumbs = Array.from(thumbStrip.children);
+
+  function setTransform(px, animate) {
+    track.classList.toggle('no-anim', !animate);
+    track.style.transform = `translate3d(${px}px, 0, 0)`;
+  }
+
+  function updateUI() {
+    dots.forEach((d, i) => d.classList.toggle('active', i === index));
+    thumbs.forEach((t, i) => t.classList.toggle('active', i === index));
+    counter.textContent = `${index + 1} / ${total}`;
+    // Arrows never disabled — infinite loop
+  }
+
+  // Move directly to a logical index (used by dots/thumbs/initial render)
+  function goTo(i, animate = true) {
+    trackWidth = carousel.clientWidth;
+    index = ((i % total) + total) % total;
+    trackIndex = index + 1;
+    setTransform(-trackIndex * trackWidth, animate);
+    updateUI();
+  }
+
+  // Advance by ±1 — relies on snap after animation for seamless wrap
+  function step(direction) {
+    trackWidth = carousel.clientWidth;
+    // If we're currently sitting on a clone (shouldn't happen, but safety),
+    // first snap to the real position with no animation.
+    if (trackIndex === 0) {
+      trackIndex = total;
+      setTransform(-trackIndex * trackWidth, false);
+      // Force reflow so the next setTransform animates
+      void track.offsetWidth;
+    } else if (trackIndex === total + 1) {
+      trackIndex = 1;
+      setTransform(-trackIndex * trackWidth, false);
+      void track.offsetWidth;
+    }
+    trackIndex += direction;
+    setTransform(-trackIndex * trackWidth, true);
+    index = ((index + direction) % total + total) % total;
+    updateUI();
+  }
+
+  function next() { step(1); }
+  function prev() { step(-1); }
+
+  // After the animation ends, if we landed on a clone slide, snap (no animation)
+  // to the equivalent real slide so the next move feels continuous.
+  function snapIfOnClone() {
+    trackWidth = carousel.clientWidth;
+    if (trackIndex === 0) {
+      trackIndex = total;
+      setTransform(-trackIndex * trackWidth, false);
+    } else if (trackIndex === total + 1) {
+      trackIndex = 1;
+      setTransform(-trackIndex * trackWidth, false);
+    }
+  }
+  track.addEventListener('transitionend', (e) => {
+    if (e.propertyName !== 'transform') return;
+    snapIfOnClone();
+  });
+
+  prevBtn.addEventListener('click', (e) => { e.stopPropagation(); prev(); });
+  nextBtn.addEventListener('click', (e) => { e.stopPropagation(); next(); });
+
+  // ---------- Drag / swipe ----------
+  function dragStart(clientX) {
+    dragging = true;
+    startX = clientX;
+    currentX = clientX;
+    trackWidth = carousel.clientWidth;
+    track.classList.add('no-anim');
+  }
+  function dragMove(clientX) {
+    if (!dragging) return;
+    currentX = clientX;
+    const delta = currentX - startX;
+    setTransform(-trackIndex * trackWidth + delta, false);
+  }
+  function dragEnd() {
+    if (!dragging) return;
+    dragging = false;
+    const delta = currentX - startX;
+    const threshold = trackWidth * 0.18; // 18% swipe = page turn
+    if (delta < -threshold) {
+      step(1);  // wraps automatically
+    } else if (delta > threshold) {
+      step(-1);
+    } else {
+      // snap back to current position
+      setTransform(-trackIndex * trackWidth, true);
+    }
+  }
+
+  // Track whether this pointer was a drag (so click != drag-release)
+  let pointerMoved = false;
+  // Suppress next click after a touch-swipe (touchend fires before synthetic click)
+  let suppressClick = false;
+
+  carousel.addEventListener('touchstart', (e) => {
+    pointerMoved = false;
+    dragStart(e.touches[0].clientX);
+  }, { passive: true });
+  carousel.addEventListener('touchmove', (e) => {
+    if (Math.abs(e.touches[0].clientX - startX) > 5) pointerMoved = true;
+    dragMove(e.touches[0].clientX);
+  }, { passive: true });
+  carousel.addEventListener('touchend', () => {
+    if (pointerMoved) suppressClick = true;
+    dragEnd();
+  });
+
+  carousel.addEventListener('mousedown', (e) => {
+    if (e.button !== 0) return;
+    pointerMoved = false;
+    dragStart(e.clientX);
+    e.preventDefault();
+  });
+  window.addEventListener('mousemove', (e) => {
+    if (!dragging) return;
+    if (Math.abs(e.clientX - startX) > 5) pointerMoved = true;
+    dragMove(e.clientX);
+  });
+  window.addEventListener('mouseup', () => {
+    if (dragging) dragEnd();
+  });
+
+  // ---------- Click to open lightbox (only if not dragging/swiping) ----------
+  carousel.addEventListener('click', (e) => {
+    if (suppressClick) { suppressClick = false; return; }
+    if (pointerMoved) return;
+    // Ignore clicks on controls
+    if (e.target.closest('.carousel-arrow, .carousel-dots, .carousel-counter, .hero-badges')) return;
+    openLightbox(index);
+  });
+
+  // ---------- Keyboard ----------
+  carousel.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') { e.preventDefault(); prev(); }
+    if (e.key === 'ArrowRight') { e.preventDefault(); next(); }
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLightbox(index); }
+  });
+
+  // ---------- Resize ----------
+  let resizeRAF;
+  window.addEventListener('resize', () => {
+    cancelAnimationFrame(resizeRAF);
+    resizeRAF = requestAnimationFrame(() => goTo(index, false));
+  });
+
+  // ============================================================
+  // LIGHTBOX — fullscreen viewer with same carousel mechanics
+  // ============================================================
+
+  const lb = document.getElementById('lightbox');
+  const lbTrack = document.getElementById('lb-track');
+  const lbStage = document.getElementById('lb-stage');
+  const lbPrev = document.getElementById('lb-prev');
+  const lbNext = document.getElementById('lb-next');
+  const lbClose = document.getElementById('lb-close');
+  const lbCounter = document.getElementById('lb-counter');
+
+  let lbIndex = 0;
+  let lbStageW = 0;
+  let lbDragging = false;
+  let lbStartX = 0;
+  let lbCurX = 0;
+
+  // Build slides
+  slides.forEach((s) => {
+    const slide = document.createElement('div');
+    slide.className = 'lightbox-slide';
+    const img = document.createElement('img');
+    img.src = s.querySelector('img').src;
+    img.alt = s.querySelector('img').alt;
+    slide.appendChild(img);
+    lbTrack.appendChild(slide);
+  });
+
+  function lbSetTransform(px, animate) {
+    lbTrack.classList.toggle('no-anim', !animate);
+    lbTrack.style.transform = `translate3d(${px}px, 0, 0)`;
+  }
+
+  function lbUpdate() {
+    lbCounter.textContent = `${lbIndex + 1} / ${total}`;
+    lbPrev.disabled = lbIndex === 0;
+    lbNext.disabled = lbIndex === total - 1;
+  }
+
+  function lbGoTo(i, animate = true) {
+    lbIndex = Math.max(0, Math.min(total - 1, i));
+    lbStageW = lbStage.clientWidth;
+    lbSetTransform(-lbIndex * lbStageW, animate);
+    lbUpdate();
+  }
+
+  function openLightbox(startIdx) {
+    lbIndex = startIdx;
+    lb.classList.add('open');
+    document.body.classList.add('lb-open');
+    // Wait for layout
+    requestAnimationFrame(() => {
+      lbStageW = lbStage.clientWidth;
+      lbSetTransform(-lbIndex * lbStageW, false);
+      lbUpdate();
+    });
+  }
+
+  function closeLightbox() {
+    lb.classList.remove('open');
+    document.body.classList.remove('lb-open');
+    // Sync main carousel position
+    goTo(lbIndex);
+  }
+
+  lbPrev.addEventListener('click', (e) => { e.stopPropagation(); lbGoTo(lbIndex - 1); });
+  lbNext.addEventListener('click', (e) => { e.stopPropagation(); lbGoTo(lbIndex + 1); });
+  lbClose.addEventListener('click', closeLightbox);
+
+  // Click backdrop (stage) to close, but not on image, and not after a swipe
+  let lbSuppressClick = false;
+  lbStage.addEventListener('click', (e) => {
+    if (lbSuppressClick) { lbSuppressClick = false; return; }
+    if (e.target === lbStage || e.target === lbTrack || e.target.classList.contains('lightbox-slide')) {
+      closeLightbox();
+    }
+  });
+
+  // Keyboard
+  document.addEventListener('keydown', (e) => {
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') lbGoTo(lbIndex - 1);
+    if (e.key === 'ArrowRight') lbGoTo(lbIndex + 1);
+  });
+
+  // Touch swipe inside lightbox
+  let lbPointerMoved = false;
+  lbStage.addEventListener('touchstart', (e) => {
+    lbPointerMoved = false;
+    lbDragging = true;
+    lbStartX = e.touches[0].clientX;
+    lbCurX = lbStartX;
+    lbStageW = lbStage.clientWidth;
+    lbTrack.classList.add('no-anim');
+  }, { passive: true });
+  lbStage.addEventListener('touchmove', (e) => {
+    if (!lbDragging) return;
+    lbCurX = e.touches[0].clientX;
+    if (Math.abs(lbCurX - lbStartX) > 5) lbPointerMoved = true;
+    const delta = lbCurX - lbStartX;
+    lbSetTransform(-lbIndex * lbStageW + delta, false);
+  }, { passive: true });
+  lbStage.addEventListener('touchend', () => {
+    if (!lbDragging) return;
+    lbDragging = false;
+    const delta = lbCurX - lbStartX;
+    const threshold = lbStageW * 0.15;
+    if (lbPointerMoved) lbSuppressClick = true;
+    if (delta < -threshold && lbIndex < total - 1) lbGoTo(lbIndex + 1);
+    else if (delta > threshold && lbIndex > 0) lbGoTo(lbIndex - 1);
+    else lbGoTo(lbIndex);
+  });
+
+  // Resize while lightbox open
+  window.addEventListener('resize', () => {
+    if (lb.classList.contains('open')) {
+      cancelAnimationFrame(resizeRAF);
+      resizeRAF = requestAnimationFrame(() => lbGoTo(lbIndex, false));
+    }
+  });
+
+  // ---------- Initial render ----------
+  // Defer to next frame so the carousel has its real width
+  requestAnimationFrame(() => goTo(0, false));
+
+  // ============================================================
+  // VIDEO CARDS — click to play, click again to pause
+  // Pauses other videos when one starts playing
+  // ============================================================
+  const videoCards = document.querySelectorAll('[data-video]');
+  videoCards.forEach((card) => {
+    const video = card.querySelector('video');
+    if (!video) return;
+
+    card.addEventListener('click', () => {
+      const isPlaying = card.classList.contains('playing');
+      if (isPlaying) {
+        video.pause();
+        card.classList.remove('playing');
+      } else {
+        // Pause all other videos first
+        videoCards.forEach((other) => {
+          if (other !== card) {
+            const v = other.querySelector('video');
+            if (v) v.pause();
+            other.classList.remove('playing');
+          }
+        });
+        // Add class immediately so the UI reacts now (don't wait for play promise)
+        card.classList.add('playing');
+        // Make sure video is loaded and start playback
+        if (video.readyState === 0) {
+          video.load();
+        }
+        const playPromise = video.play();
+        if (playPromise && typeof playPromise.catch === 'function') {
+          playPromise.catch((err) => {
+            // Autoplay blocked or other error — revert UI
+            console.warn('Video play failed:', err);
+            card.classList.remove('playing');
+          });
+        }
+      }
+    });
+
+    // Sync UI when video actually starts/pauses (handles cases like
+    // hardware decoding finishing late)
+    video.addEventListener('playing', () => card.classList.add('playing'));
+    video.addEventListener('pause', () => {
+      // Only remove if not just buffering
+      if (video.ended || video.seeking === false) {
+        card.classList.remove('playing');
+      }
+    });
+    video.addEventListener('ended', () => card.classList.remove('playing'));
+  });
+})();
+</script>
+
+</body>
+</html>
