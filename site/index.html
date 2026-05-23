@@ -1,0 +1,575 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AP Motors — Vehículos premium en Costa Rica</title>
+<link rel="stylesheet" href="assets/styles.css" />
+<style>
+/* ============ HERO ============ */
+.home-hero {
+  padding: 80px 0 60px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.home-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center top, rgba(30,111,255,0.06), transparent 60%);
+  z-index: -1;
+}
+.home-hero .eyebrow {
+  display: inline-block;
+  font-size: 11px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 700;
+  padding: 6px 14px;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  background: rgba(30,111,255,0.06);
+  margin-bottom: 24px;
+}
+.home-hero h1 {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(42px, 8vw, 84px);
+  line-height: 1.0;
+  letter-spacing: -0.035em;
+  margin-bottom: 22px;
+  max-width: 880px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.home-hero h1 em {
+  font-style: italic;
+  color: var(--accent);
+}
+.home-hero p {
+  color: var(--ink-muted);
+  font-size: 18px;
+  max-width: 580px;
+  margin: 0 auto 36px;
+  line-height: 1.5;
+}
+.home-hero .cta-row {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ============ INVENTORY ============ */
+.inventory {
+  padding: 40px 0;
+}
+.inventory-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.inventory-head h2 {
+  font-family: var(--display);
+  font-size: clamp(30px, 4vw, 42px);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+.inventory-head .count {
+  color: var(--ink-muted);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.car-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 28px;
+}
+@media (min-width: 700px) { .car-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1100px) { .car-grid { grid-template-columns: repeat(3, 1fr); } }
+
+.car-card {
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: all 0.25s;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+}
+.car-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--ink);
+  box-shadow: 0 20px 40px -20px rgba(0,0,0,0.15);
+}
+.car-card-image {
+  aspect-ratio: 4 / 3;
+  background: var(--bg-soft);
+  position: relative;
+  overflow: hidden;
+}
+.car-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s;
+}
+.car-card:hover .car-card-image img {
+  transform: scale(1.04);
+}
+.car-card-tag {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  padding: 5px 11px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  z-index: 2;
+}
+.car-card-tag svg { width: 11px; height: 11px; }
+
+.car-card-wa {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #25d366;
+  color: #fff;
+  display: grid;
+  place-items: center;
+  z-index: 2;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.18);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.car-card-wa:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.22);
+}
+.car-card-wa svg { width: 18px; height: 18px; }
+
+.car-card-body {
+  padding: 22px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.car-card-brand {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.car-card-title {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+.car-card-specs {
+  display: flex;
+  gap: 14px;
+  font-size: 13px;
+  color: var(--ink-muted);
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+.car-card-spec {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.car-card-spec svg {
+  width: 14px;
+  height: 14px;
+}
+.car-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+  margin-top: auto;
+}
+.car-card-price {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+.car-card-price small {
+  font-size: 12px;
+  color: var(--ink-muted);
+  font-weight: 500;
+  margin-right: 2px;
+}
+.car-card-arrow {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--ink);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  transition: transform 0.2s;
+}
+.car-card:hover .car-card-arrow {
+  transform: translateX(2px);
+}
+.car-card-arrow svg { width: 16px; height: 16px; }
+
+/* ============ HOW IT WORKS ============ */
+.process {
+  padding: 80px 0;
+  background: var(--bg-card);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  margin: 80px 0 0;
+}
+.process-head {
+  text-align: center;
+  margin-bottom: 48px;
+}
+.process-head .eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+.process-head h2 {
+  font-family: var(--display);
+  font-size: clamp(30px, 4vw, 44px);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  margin-bottom: 14px;
+}
+.process-head p {
+  color: var(--ink-muted);
+  font-size: 16px;
+  max-width: 520px;
+  margin: 0 auto;
+}
+.process-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+}
+@media (min-width: 768px) { .process-grid { grid-template-columns: repeat(3, 1fr); } }
+
+.process-step {
+  text-align: center;
+  padding: 0 8px;
+}
+.process-num {
+  display: inline-grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: var(--ink);
+  color: #fff;
+  font-weight: 700;
+  font-size: 18px;
+  margin-bottom: 20px;
+  letter-spacing: -0.02em;
+}
+.process-step h3 {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 10px;
+}
+.process-step p {
+  color: var(--ink-muted);
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+/* ============ CTA STRIP ============ */
+.cta-strip {
+  background: var(--bg-dark);
+  color: #fff;
+  border-radius: var(--radius);
+  padding: 56px 32px;
+  text-align: center;
+  margin: 80px 0 0;
+}
+.cta-strip .eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+.cta-strip h2 {
+  font-family: var(--display);
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin-bottom: 14px;
+}
+.cta-strip p {
+  color: #b0b0b2;
+  margin-bottom: 28px;
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.cta-strip .cta-row {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.cta-strip .btn-outline {
+  border-color: rgba(255,255,255,0.3);
+  color: #fff;
+}
+.cta-strip .btn-outline:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(255,255,255,0.6);
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="container row">
+    <a href="index.html" class="brand">
+      <div class="brand-mark">AP</div>
+      <div>
+        <div class="brand-name">AP Motors</div>
+        <span class="brand-sub">Costa Rica</span>
+      </div>
+    </a>
+    <nav class="header-nav">
+      <a href="#inventario">Inventario</a>
+      <a href="#proceso">Cómo Funciona</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a class="header-cta" href="https://wa.me/50687949894">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+      WhatsApp
+    </a>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="home-hero">
+    <div class="container">
+      <span class="eyebrow">Importados desde Estados Unidos</span>
+      <h1>Vehículos premium, <em>seleccionados a mano.</em></h1>
+      <p>Especialistas en eléctricos y de alta gama, al mejor precio del país. Cada unidad la elegimos como si fuera para nosotros — sin sorpresas, sin intermediarios, con reporte Carfax limpio.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#inventario">Ver Inventario</a>
+        <a class="btn btn-outline" href="https://wa.me/50687949894">Hablar con Adrián</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- INVENTORY -->
+  <section class="inventory" id="inventario">
+    <div class="container">
+      <div class="inventory-head">
+        <h2>Inventario actual</h2>
+        <span class="count">2 vehículos disponibles</span>
+      </div>
+
+      <div class="car-grid">
+
+        <!-- BMW X7 -->
+        <div class="car-card" data-href="bmw-x7-xdrive40i.html">
+          <div class="car-card-image">
+            <span class="car-card-tag" style="background: #6b3410;">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 12c0-1.7.7-3.2 1.8-4.2L3 6h6l-.4 4-2-2c-.4.6-.6 1.3-.6 2 0 1.7 1.3 3 3 3v2c-2.8 0-5-2.2-5-5zm15.2 4.2c1.1-1 1.8-2.5 1.8-4.2 0-2.8-2.2-5-5-5V5c2.8 0 5 2.2 5 5 0 .7-.2 1.4-.6 2l-2-2L17 14h6l-1.8-2.2z"/></svg>
+              Mild Hybrid
+            </span>
+            <a class="car-card-wa" href="https://wa.me/50687949894?text=Hola%2C%20me%20interesa%20el%20BMW%20X7%20xDrive40i%202023%20que%20tienen%20a%20la%20venta.%20%C2%BFSigue%20disponible%3F" target="_blank" rel="noopener" aria-label="Consultar por WhatsApp">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+            </a>
+            <img src="assets/cars/x7-xdrive40i/exterior/01-front-left-outdoor.png" alt="BMW X7 xDrive40i" />
+          </div>
+          <div class="car-card-body">
+            <div class="car-card-brand">BMW · 2023</div>
+            <div class="car-card-title">X7 xDrive40i</div>
+            <div class="car-card-specs">
+              <span class="car-card-spec">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                7.280 km
+              </span>
+              <span class="car-card-spec">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                375 HP
+              </span>
+              <span class="car-card-spec">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+                7 pasajeros
+              </span>
+            </div>
+            <div class="car-card-footer">
+              <div class="car-card-price"><small>₡</small>53.000.000</div>
+              <div class="car-card-arrow">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- BMW i4 -->
+        <div class="car-card" data-href="bmw-i4-edrive35.html">
+          <div class="car-card-image">
+            <span class="car-card-tag">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"/></svg>
+              Eléctrico
+            </span>
+            <a class="car-card-wa" href="https://wa.me/50687949894?text=Hola%2C%20me%20interesa%20el%20BMW%20i4%20eDrive35%20Gran%20Coup%C3%A9%202023%20que%20tienen%20a%20la%20venta.%20%C2%BFSigue%20disponible%3F" target="_blank" rel="noopener" aria-label="Consultar por WhatsApp">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+            </a>
+            <img src="assets/cars/i4-edrive35/exterior/01-front-left.png" alt="BMW i4 eDrive35" />
+          </div>
+          <div class="car-card-body">
+            <div class="car-card-brand">BMW · 2023</div>
+            <div class="car-card-title">i4 eDrive35 Gran Coupé</div>
+            <div class="car-card-specs">
+              <span class="car-card-spec">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                48.700 km
+              </span>
+              <span class="car-card-spec">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                281 HP
+              </span>
+              <span class="car-card-spec">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h4l3-9 4 18 3-9h4"/></svg>
+                420 km
+              </span>
+            </div>
+            <div class="car-card-footer">
+              <div class="car-card-price"><small>₡</small>26.900.000</div>
+              <div class="car-card-arrow">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="process" id="proceso">
+    <div class="container">
+      <div class="process-head">
+        <div class="eyebrow">Cómo trabajamos</div>
+        <h2>Premium, sin trucos.</h2>
+        <p>Especialistas en vehículos eléctricos y de alta gama, importados desde Estados Unidos al mejor precio del país.</p>
+      </div>
+      <div class="process-grid">
+        <div class="process-step">
+          <div class="process-num">1</div>
+          <h3>Selección a mano</h3>
+          <p>Cada vehículo lo elegimos como si lo compráramos para nosotros. Carfax limpio, historial verificado y los estándares más exigentes — eléctricos y premium.</p>
+        </div>
+        <div class="process-step">
+          <div class="process-num">2</div>
+          <h3>Importación directa</h3>
+          <p>Traemos la unidad desde Estados Unidos eliminando intermediarios. Eso se traduce en los mejores precios del país, con transparencia total en costos y tiempos.</p>
+        </div>
+        <div class="process-step">
+          <div class="process-num">3</div>
+          <h3>Calidad garantizada</h3>
+          <p>Recibís un vehículo en el que podés confiar — revisado, documentado y listo para entregar. Calidad estadounidense, sin trucos ni sorpresas.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA STRIP -->
+  <div class="container">
+    <div class="cta-strip" id="contacto">
+      <div class="eyebrow">¿Buscás algo específico?</div>
+      <h2>También recibimos vehículos.</h2>
+      <p>Si tenés un vehículo para vender o querés que importemos uno específico, hablemos. Respuesta rápida por WhatsApp.</p>
+      <div class="cta-row">
+        <a class="btn btn-wa" href="https://wa.me/50687949894?text=Hola%20Adri%C3%A1n%2C%20quisiera%20m%C3%A1s%20informaci%C3%B3n.">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          +506 8794 9894
+        </a>
+        <a class="btn btn-outline" href="tel:+50687949894">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Llamar
+        </a>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<!-- WhatsApp Floating Button -->
+<a class="wa-float" href="https://wa.me/50687949894" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+</a>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <a href="index.html" class="brand">
+      <div class="brand-mark">AP</div>
+      <div>
+        <div class="brand-name">AP Motors</div>
+        <span class="brand-sub">Costa Rica</span>
+      </div>
+    </a>
+    <div class="footer-content">
+      <div class="footer-contact">
+        <h4>Contacto</h4>
+        <a href="https://wa.me/50687949894">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          +506 8794 9894
+        </a>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2026 AP Motors. Todos los derechos reservados.</div>
+  </div>
+</footer>
+
+<script>
+  // Card navigation — click anywhere on card EXCEPT the WhatsApp button goes to detail page
+  document.querySelectorAll('.car-card[data-href]').forEach((card) => {
+    card.addEventListener('click', (e) => {
+      // If user clicked the WhatsApp link (or anything inside it), let the link handle it
+      if (e.target.closest('.car-card-wa')) return;
+      window.location.href = card.dataset.href;
+    });
+  });
+</script>
+
+</body>
+</html>
